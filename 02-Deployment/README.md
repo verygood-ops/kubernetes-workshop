@@ -1,6 +1,8 @@
 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 ---
 
+> A Deployment controller provides declarative updates for Pods and ReplicaSets.
+
 ```
 kubectl apply -f deployment.yaml
 kubectl rollout status -f deployment.yaml

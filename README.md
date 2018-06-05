@@ -1,7 +1,4 @@
-  * Intros
-  * 
-  
-Additional Links
+Links
 ---
 
 https://www.katacoda.com/courses/kubernetes/playground
