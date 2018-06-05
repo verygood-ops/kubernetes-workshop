@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: nginx-1.11
+  name: my-app-v2
 spec:
   replicas: 3
   template:
     metadata:
       labels:
-        name: nginx
+        name: my-app
         version: "1.11"
     spec:
       containers: 
-        - name: nginx
-          image: nginx:1.11
+        - name: my-app
+          image: gcr.io/google-samples/hello-app:2.0
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8080
