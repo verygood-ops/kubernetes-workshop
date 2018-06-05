@@ -38,7 +38,7 @@ kubectl create -n tinyspace -f ./05-Quota/cpu-replication.yaml
 
 scale it up:
 ```
-kubectl -n tinyspace scale rc/cpuhog --replicas=2
+kubectl -n tinyspace scale rc/cpuhog --replicas=3
 ```
 
 and check:
@@ -56,28 +56,49 @@ kubectl -n tinyspace delete -f ./05-Quota/cpu-replication.yaml
 ## OOM
 Launch memory starving container:
 ```
-kubectl create -f ./05-Quota/mem-starving.yaml
-kubectl -n tinyspace describe pod
-kubectl -n tinyspace describe pods <name>
+kubectl -n tinyspace create -f ./05-Quota/mem-starving.yml
+kubectl -n tinyspace get po
 ```
 Container will be killed by OOM error due to wrong limits
 
 Cleanup:
 ```
-kubectl delete deploy --all
+kubectl -n tinyspace delete rc --all
 ```
 
 ## Memory QoS
-Launch:
+
+Create a Pod that gets assigned a QoS class of Guaranteed:
 ```
 kubectl -n tinyspace create -f ./05-Quota/mem-guaranteed-replication.yaml
+```
+
+View POD info:
+```
+kubectl -n tinyspace get po -o yaml
+```
+
+Delete:
+```
+kubectl -n tinyspace delete rc --all
+```
+
+Create a Pod that gets assigned a QoS class of Burstable
+```
 kubectl -n tinyspace create -f ./05-Quota/mem-burstable-replication.yaml
-kubectl -n tinyspace create -f ./05-Quota/mem-besteffort-replication.yaml
+```
+
+View and delete like in previous step.
+
+
+Create a Pod that gets assigned a QoS class of BestEffort:
+```
+kubectl create -f ./05-Quota/mem-besteffort-replication.yaml
 ```
 
 ## Cleanup:
 ```
-kubectl delete deploy --all
+kubectl delete rc --all
 ```
 
 ## Minikube Cleanup:
