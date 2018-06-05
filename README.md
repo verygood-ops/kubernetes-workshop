@@ -2,7 +2,8 @@
 
 # [Very Good Security](https://www.verygoodsecurity.com/?utm_source=k8s) Kubernetes Workshop
 
-## https://github.com/verygood-ops/
+### https://github.com/verygood-ops/
+### https://etherpad.net/p/vgs-k8s
 
 * [Installing K8s](https://github.com/verygood-ops/kubernetes-workshop/tree/master/01-Install)
 * Deploying on Kubernetes
