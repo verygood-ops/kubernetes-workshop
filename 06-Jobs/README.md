@@ -33,7 +33,7 @@ To see results of job execution, run
 ```bash
 pods=$(kubectl get pods --selector=job-name=converter --output=jsonpath={.items..metadata.name}); kubectl logs $pods
 ```
-You should see list of numbers from 1 to 1000 - content of queue files.
+You should see ffmpeg output
 
 To clean pods not needed anymore run
 ```
@@ -42,7 +42,7 @@ kubectl delete -f job-ffmpeg.yaml
 
 ## Cron jobs
 
-Suppose this directory is continiusly filled with files and need to be cleaned from time to time. So our job need to be a cron job!
+Suppose we need to convert files only from time to time. So our job need to be a cron job!
 [job-cron-ffmpeg.yaml](job-cron-ffmpeg.yaml) will do the trick
 
 Check cronjobs with\
