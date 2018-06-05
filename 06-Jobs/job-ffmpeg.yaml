@@ -17,7 +17,7 @@ spec:
       volumes:
       - name: queue-volume
         hostPath:
-          path: /private/tmp/queue-files
+          path: /Users/USERNAME/queue-files
           type: Directory
   backoffLimit: 4
 
