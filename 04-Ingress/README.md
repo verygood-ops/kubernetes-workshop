@@ -8,5 +8,5 @@ minikube service my-app
 kubectl get svc my-app -o yaml
 kubectl delete svc my-app
 kubectl create -f ingress.yaml
-kubectl get svc my-app -o yaml
+kubectl get ingress my-ingress -o yaml
 ```
