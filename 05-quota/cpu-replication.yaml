@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: cpuhog
+spec:
+  replicas: 1
+  selector:
+    app: cpuhog
+  template:
+    metadata:
+      name: cpuhog
+      labels:
+        app: cpuhog
+    spec:
+      containers:
+      - name: cpuhog
+        image: busybox
+        args:
+          - "md5sum"
+          - "/dev/urandom"
+        resources:
+          limits:
+            cpu: "0.2"
+            memory: "500Mi"

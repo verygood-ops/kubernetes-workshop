@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mem-guaranteed
+spec:
+  replicas: 1
+  selector:
+    app: memhog
+  template:
+    metadata:
+      name: mem-guaranteed
+      labels:
+        app: memhog
+    spec:
+      containers:
+      - name: mem-guaranteed
+        image: lorel/docker-stress-ng
+        args: ["--class", "memory", "--sequential", "8", "--vm-hang", "0"]
+        resources:
+          # requests are set equal to limits when not explicitly specified
+          limits:
+            cpu: "10m"
+            memory: "1.5Gi"
