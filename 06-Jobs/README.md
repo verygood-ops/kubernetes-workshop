@@ -66,8 +66,7 @@ So our streaming service grows up and one k8s jobs is not enough now to convert 
 [job-distributed-ffmpeg.yaml](job-cron-ffmpeg.yaml):
 
 Here\
-`parallelism: 4`: number of jobs running in parallel\
-`sleep 1` in bash command: to let all pods do the job
+`parallelism: 4`: number of jobs running in parallel
 
 Run the job and see the logs on one of the pods after job is done
 

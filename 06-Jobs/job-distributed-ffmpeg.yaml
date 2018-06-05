@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: converter
 spec:
-  parallelism: 3
+  parallelism: 4
   template:
     spec:
       containers:
