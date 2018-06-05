@@ -19,7 +19,7 @@ Download the [minikube-windows-amd64.exe](https://storage.googleapis.com/minikub
 
 ## Running the cluster
 
-`minikube start`
+`minikube start --memory 4096 --kubernetes-version v1.9.4 --bootstrapper kubeadm`
 
 ## Auto Completion
 
