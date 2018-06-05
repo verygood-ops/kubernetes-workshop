@@ -1,7 +1,7 @@
 # Kubernetes Jobs
 
 Lets say we have some directory where video files appears. They will be our queue. We need to convert this files to some basic resolutions.\
-In real life it is tipical job for video streaming services like YouTube.com 
+In real life it is typical job for video streaming services like YouTube.com 
 
 ## Simple Job
 
@@ -45,7 +45,7 @@ kubectl delete -f job-ffmpeg.yaml
 Suppose we need to convert files only from time to time. So our job need to be a cron job!
 [job-cron-ffmpeg.yaml](job-cron-ffmpeg.yaml) will do the trick
 
-Check cronjobs with\
+Check cronjobs with
 ```
 kubectl get cronjobs
 ```
@@ -55,7 +55,7 @@ NAME      SCHEDULE      SUSPEND   ACTIVE    LAST SCHEDULE   AGE
 converter   */1 * * * *   False     0         13s             1m
 ```
 
-Delete cronjob\
+Delete cronjob
 ```
 kubectl delete -f ./job-cron-ffmpeg.yaml
 ```
@@ -66,8 +66,7 @@ So our streaming service grows up and one k8s jobs is not enough now to convert 
 [job-distributed-ffmpeg.yaml](job-cron-ffmpeg.yaml):
 
 Here\
-`parallelism: 4`: number of jobs running in parallel\
-`sleep 1` in bash command: to let all pods do the job
+`parallelism: 4`: number of jobs running in parallel
 
 Run the job and see the logs on one of the pods after job is done
 
