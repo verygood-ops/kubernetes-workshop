@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:  
+  name: my-nodeport-service
+spec:
+  selector:    
+    app: my-app
+  type: NodePort
+  ports:  
+  - name: http
+    port: 8080
+    targetPort: 8080
+    # What happens when you comment out the nodePort?
+    nodePort: 30036
+    protocol: TCP
