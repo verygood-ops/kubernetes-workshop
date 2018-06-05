@@ -37,10 +37,38 @@ echo "source <(kubectl completion bash)" >> ~/.bash_profile
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 ```
 
+## Helm
+
+https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client
+
+### Mac
+```
+brew install kubernetes-helm
+```
+
+### Windows
+
+```
+choco install kubernetes-helm
+```
+
+### Script
+
+```
+curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
+```
+
+### Tiller
+
+```
+helm init
+```
+
 ## Commands
+
+```
 kubectl get ns
 kubectl get po --all-namespaces
 kubectl get po [pod_name] -o yaml
 kubectl -n kube-system get po -l integration-test=storage-provisioner
-
-what node is a container running on
+```
