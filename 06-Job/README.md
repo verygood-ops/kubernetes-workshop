@@ -46,8 +46,11 @@ kubectl delete -f job-ffmpeg.yaml
 ## Cron jobs
 
 Suppose we need to convert files only from time to time. So our job need to be a cron job!
-[job-cron-ffmpeg.yaml](job-cron-ffmpeg.yaml) will do the trick
+[job-cron-ffmpeg.yaml](job-cron-ffmpeg.yaml) will do the trick. Run it:
 
+```
+ kubectl create -f job-cron-ffmpeg.yaml
+```
 Check cronjobs with
 ```
 kubectl get cronjobs
