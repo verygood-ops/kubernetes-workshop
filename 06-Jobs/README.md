@@ -62,8 +62,8 @@ kubectl delete -f ./job-cron-ffmpeg.yaml
 
 ## Distributed jobs
 
-We need to modify bash command if we want to run more than one job pod or there will be race condition errors.
-So, use [job-distributed-ffmpeg.yaml](job-cron-ffmpeg.yaml):
+So our streaming service grows up and one k8s jobs is not enough now to convert files. We need to increase number of converters like in
+[job-distributed-ffmpeg.yaml](job-cron-ffmpeg.yaml):
 
 Here\
 `parallelism: 4`: number of jobs running in parallel\
