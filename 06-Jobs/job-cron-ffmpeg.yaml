@@ -1,0 +1,26 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: converter
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: converter
+        spec:
+          containers:
+          - name: converter
+            image: bash
+            command: ["bash"]
+            args: ['-c', 'ls -1 *.mkv | while read file; do [ -f "done/640_$(basename $file)" ] || ffmpeg -i $file -vf scale=640:-1 done/640_$(basename $file) </dev/null; done']
+            volumeMounts:
+            - mountPath: /mnt
+              name: queue-volume
+          restartPolicy: Never
+          volumes:
+          - name: queue-volume
+            hostPath:
+              path: /Users/USERNAME/queue-files
+              type: Directory

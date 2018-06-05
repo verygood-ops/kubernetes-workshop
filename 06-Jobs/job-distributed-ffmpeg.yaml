@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: converter
+spec:
+  parallelism: 3
+  template:
+    spec:
+      containers:
+      - name: converter
+        image: jrottenberg/ffmpeg
+        command: ['bash']
+        args: ['-c', 'cd /mnt; ls -1 *.mkv | while read file; do [ -f "done/640_$(basename $file)" ] || ffmpeg -i $file -vf scale=640:-1 done/640_$(basename $file) </dev/null; done']
+        volumeMounts:
+        - mountPath: /mnt
+          name: queue-volume
+      restartPolicy: Never
+      volumes:
+      - name: queue-volume
+        hostPath:
+          path: /Users/USERNAME/queue-files
+          type: Directory
+  backoffLimit: 4
+
