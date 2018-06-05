@@ -5,18 +5,21 @@ In real life it is typical job for video streaming services like YouTube.com
 
 ## Simple Job
 
+Some preparations.
 Create a directory that will be filled by files.\
 All commands below are related to macOS. 
 ```bash
-mkdir /Users/$USER/queue-files
+mkdir -p /Users/$USER/queue-files/done
 ```
 Download sample video files. They will be our queue.
-Change `USERNAME` with your login name.
 ```bash
-wget http://www.jell.yfish.us/media/jellyfish-{3,5,10}-mbps-hd-h264.mkv -P /Users/USERNAME/queue-files/
+wget http://www.jell.yfish.us/media/jellyfish-{3,5,10}-mbps-hd-h264.mkv -P /Users/$USER/queue-files/
 ```
-
-Use a file [job-ffmpeg.yaml](job-ffmpeg.yaml) with a job to deal with our "queue". Change `USERNAME` with your login name.
+Change `USERNAME` with your login name in jobs configs.
+```
+sed -i '.bak' "s/USERNAME/$USER/" job-*.yaml
+```
+Use a file [job-ffmpeg.yaml](job-ffmpeg.yaml) with a job to deal with our "queue". 
 
 Run the job.
  
@@ -43,8 +46,11 @@ kubectl delete -f job-ffmpeg.yaml
 ## Cron jobs
 
 Suppose we need to convert files only from time to time. So our job need to be a cron job!
-[job-cron-ffmpeg.yaml](job-cron-ffmpeg.yaml) will do the trick
+[job-cron-ffmpeg.yaml](job-cron-ffmpeg.yaml) will do the trick. Run it:
 
+```
+ kubectl create -f job-cron-ffmpeg.yaml
+```
 Check cronjobs with
 ```
 kubectl get cronjobs

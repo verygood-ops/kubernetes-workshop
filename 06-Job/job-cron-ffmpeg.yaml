@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: converter
 spec:
-  schedule: "*/5 * * * *"
+  schedule: "*/1 * * * *"
   jobTemplate:
     spec:
       template:
