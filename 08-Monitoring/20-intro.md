@@ -21,8 +21,3 @@ Alerts are defined based on Prometheus's query language and maintain dimensional
 Existing exporters allow bridging of third-party data into Prometheus. Examples: system statistics, as well as Docker, HAProxy, StatsD, and JMX metrics.
 
 1. **Client libraries** Client libraries allow easy instrumentation of services. Over ten languages are supported already and custom libraries are easy to implement.
-
-
-
-### Where to run prometheus
-
